@@ -7,7 +7,7 @@ var removeDuplicates = function(nums) {
   for (let i = 1; i < nums.length; i++) {
     if (nums[i] !== currentCheck) {
       currentCheck = nums[i];
-    } else  {
+    } else {
       nums.splice(i, 1).push('_');
       i--;
     }
