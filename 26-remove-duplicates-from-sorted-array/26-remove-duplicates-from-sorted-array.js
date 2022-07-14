@@ -3,6 +3,8 @@
  * @return {number}
  */
 var removeDuplicates = function(nums) {
+  
+  // avoids checking the pushed "_" indexes
   let numsLength = nums.length;
   
   let currentCheck = nums[0];
