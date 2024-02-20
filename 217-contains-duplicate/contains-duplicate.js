@@ -4,8 +4,8 @@
  */
 var containsDuplicate = function(nums) {
     const dup = new Set([...nums]);
-    console.log(nums.toString())
-    console.log([...dup].toString())
-    console.log(nums.toString() === [...dup].toString())
-    return nums.toString() == [...dup].toString() ? false : true;
+    console.log(JSON.stringify(nums))
+    console.log(JSON.stringify([...dup]))
+    console.log(JSON.stringify(nums) === JSON.stringify([...dup]))
+    return JSON.stringify(nums) === JSON.stringify([...dup]) ? false : true;
 };
