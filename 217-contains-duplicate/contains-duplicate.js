@@ -4,5 +4,5 @@
  */
 var containsDuplicate = function(nums) {
     const dup = new Set([...nums]);
-    return JSON.stringify(nums) === JSON.stringify([...dup]) ? false : true;
+    return nums.length === dup.size ? false : true;
 };
