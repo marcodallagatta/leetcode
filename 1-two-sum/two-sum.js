@@ -4,10 +4,16 @@
  * @return {number[]}
  */
 var twoSum = function (nums, target) {
-    for (let i = 0; i < nums.length; i++) {
-        const diff = target - nums[i];
-        const ind = nums.indexOf(diff);
-        if (ind !== -1 && ind !== i) return [i, ind]
-        if (i === nums[i]) continue
-    } 
+    const hash = new Map();
+
+    for (let i=0; i<nums.length; i++) {
+        const diff = target - nums[i]
+        console.log(i, diff, hash.get(diff))
+        if (hash.get(diff) !== undefined) {
+            return [i, hash.get(diff)]
+        } else {
+            hash.set(nums[i], i)
+        }
+        console.log(hash)
+    }
 };
