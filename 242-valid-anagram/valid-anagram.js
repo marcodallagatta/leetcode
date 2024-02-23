@@ -5,5 +5,4 @@
  */
 var isAnagram = function (s, t) {
     return JSON.stringify([...s].sort()) === JSON.stringify([...t].sort());
-
 };
