@@ -9,8 +9,11 @@ var maxProfit = function (prices) {
   // console.log(left, right, maxProfit);
 
   for (let i = 1; i < prices.length - 1; i++) {
+    // we only move left pointer if i is lower than current
     if (prices[i] < left) left = prices[i];
+    // we always move right pointer to the next i
     right = prices[i + 1];
+    // if the profit is more than the previous ones, we update it
     maxProfit = right - left > maxProfit ? right - left : maxProfit;
     // console.log(left, right, maxProfit);
   }
