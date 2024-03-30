@@ -3,16 +3,26 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function (s) {
+  // if (s.length === 1) return 1;
+
   let [left, right, longest] = [0, 0, 0];
 
   while (right < s.length) {
-    const isntRepeating = right - left + 1 === new Set(s.slice(left, right + 1)).size;
+    // console.log(`${left}:${s[left]} ${right}:${s[right]} = ${s.slice(left, right + 1)}`);
+    // console.log(
+    //   `span = ${right - left + 1}, set = ${new Set(s.slice(left, right)).size}, same = ${
+    //     right - left + 1 === new Set(s.slice(left, right + 1)).size
+    //   }`
+    // );
+    const isntRepeating = right - left + 1 === new Set(s.substring(left, right + 1)).size;
+    // console.log(isntRepeating);
     if (isntRepeating) {
       longest = right + 1 - left > longest ? right + 1 - left : longest;
     } else {
       left++;
     }
     right++;
+    // console.log(left, right, longest);
   }
 
   return longest;
