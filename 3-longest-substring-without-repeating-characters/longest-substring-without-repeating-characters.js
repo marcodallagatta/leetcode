@@ -3,26 +3,24 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function (s) {
-  // if (s.length === 1) return 1;
-
-  let [left, right, longest] = [0, 0, 0];
+  const set = new Set();
+  let left = 0;
+  let right = 0;
+  let longest = 0;
 
   while (right < s.length) {
-    // console.log(`${left}:${s[left]} ${right}:${s[right]} = ${s.slice(left, right + 1)}`);
-    // console.log(
-    //   `span = ${right - left + 1}, set = ${new Set(s.slice(left, right)).size}, same = ${
-    //     right - left + 1 === new Set(s.slice(left, right + 1)).size
-    //   }`
-    // );
-    const isntRepeating = right - left + 1 === new Set(s.substring(left, right + 1)).size;
-    // console.log(isntRepeating);
-    if (isntRepeating) {
-      longest = right + 1 - left > longest ? right + 1 - left : longest;
+    const letter = s[right];
+
+    if (!set.has(letter)) {
+      // if it's a new letter, add it to the set, check length, and move right pointer [-->x]
+      set.add(letter);
+      longest = Math.max(longest, set.size);
+      right++;
     } else {
+      // if the letter is alreayd present, delete the left side of the set and move left pointer [x-->]
+      set.delete(s[left]);
       left++;
     }
-    right++;
-    // console.log(left, right, longest);
   }
 
   return longest;
